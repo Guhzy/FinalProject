@@ -206,8 +206,6 @@ class Maquina(models.Model):
             transicao = transicao_comma.split('-')
             d.edge(transicao[0], transicao[2], label=transicao[1])
 
-        
-
         d.format = 'svg'
         self.diagrama = f"website/images/mt/{str(self.nome).replace(' ', '_')}.svg"
         d.render(f"website/static/website/images/mt/{str(self.nome).replace(' ', '_')}")
