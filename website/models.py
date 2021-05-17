@@ -128,8 +128,6 @@ class Maquina(models.Model):
             linha.append(simbolo)
         table.append(linha)
 
-        linha = ["", "1", "0"]
-
         aux = linha[1:]
         for estado in self.estados.split():
             linha=[estado]
