@@ -1,0 +1,26 @@
+digraph "Máquina de turing que valida uma sequência que tem o mesmo número de 0's, 1's e 2's (0^n1^n2^n)" {
+	graph [rankdir=LR]
+	node [shape=circle]
+	edge [arrowhead=vee arrowsize=1]
+	Start [label="" shape=none]
+	A
+	F
+	C
+	B
+	D
+	E
+	ha [shape=doublecircle]
+	Start -> A
+	A -> B [label="0XR"]
+	B -> B [label="00R, YYR"]
+	B -> C [label="1YR"]
+	C -> C [label="11R, ZZR"]
+	C -> D [label="2ZL"]
+	D -> D [label="11L, 00L, YYL, ZZL"]
+	D -> A [label=XXR]
+	A -> E [label=YYR]
+	E -> E [label=YYR]
+	E -> F [label=ZZR]
+	F -> F [label=ZZR]
+	F -> ha [label="$$R"]
+}

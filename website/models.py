@@ -200,9 +200,17 @@ class Maquina(models.Model):
         # Transicoes
         d.edge('Start', self.estadoInicial)
 
-        for transicao_comma in self.dicionarioTransicao.split():
-            transicao = transicao_comma.split('-')
-            d.edge(transicao[0], transicao[2], label=transicao[1])
+        dicTransicoes = {}
+        for item in self.dicionarioTransicao.split():
+            transicao = item.split('-')
+
+            if (transicao[0], transicao[2]) not in dicTransicoes.keys():
+                dicTransicoes[(transicao[0], transicao[2])] = transicao[1]
+            else:
+                dicTransicoes[(transicao[0], transicao[2])] = dicTransicoes[(transicao[0], transicao[2])] + ", " + transicao[1]
+
+        for estados in dicTransicoes:
+            d.edge(estados[0], estados[1], label = dicTransicoes[estados])
 
         d.format = 'svg'
         self.diagrama = f"website/images/mt/{str(self.nome).replace(' ', '_')}.svg"
