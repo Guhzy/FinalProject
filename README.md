@@ -1,4 +1,4 @@
-# finalProject
+# FinalProject
 
 Projeto feito no âmbito da cadeira Teoria da Computação.
 
